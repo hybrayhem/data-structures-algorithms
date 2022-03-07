@@ -8,12 +8,14 @@ public class Market extends Building {
     private String owner;
 
     public Market() {
+        super();
         openingTime = "None";
         closingTime = "None";
         owner = "Anonymous";
     }
 
-    public Market(String openingTime, String closingTime, String owner) {
+    public Market(int position, int length, int height, String openingTime, String closingTime, String owner) {
+        super(position, length, height);
         this.openingTime = openingTime;
         this.closingTime = closingTime;
         this.owner = owner;
@@ -77,11 +79,11 @@ public class Market extends Building {
 
     @Override
     public String toString() {
-        return super.toString() + "{" +
-                " openingTime=" + getOpeningTime() + ", " +
+        return super.toString() +
+                "openingTime=" + getOpeningTime() + ", " +
                 "closingTime=" + getClosingTime() + ", " +
                 "owner=" + getOwner() +
-                "}";
+                " }";
     }
 
 }

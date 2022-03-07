@@ -1,7 +1,15 @@
 package urban_planner;
 
 public class Playground extends Building {
-    
+
+    public Playground() {
+        super();
+    }
+
+    public Playground(int position, int length, int height) {
+        super(position, length, height);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == this)

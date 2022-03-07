@@ -63,11 +63,10 @@ public abstract class Building {
 
     @Override
     public String toString() {
-        return "{" +
+        return "{ " +
                 " position=" + getPosition() + ", " +
                 " length=" + getLength() + ", " +
-                " height=" + getHeight() +
-                "}";
+                " height=" + getHeight() + ", ";
     }
 
 

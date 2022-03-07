@@ -7,6 +7,7 @@ public class Office extends Building {
     private String owner;
 
     public Office() {
+        super();
         jobType = "None";
         owner = "Anonymous";
     }
@@ -51,10 +52,10 @@ public class Office extends Building {
 
     @Override
     public String toString() {
-        return super.toString() + "{" +
-                " jobType=" + getJobType() + ", " +
-                "owner=" + getOwner() + "'" +
-                "}";
+        return super.toString() +
+                "jobType=" + getJobType() + ", " +
+                "owner=" + getOwner() + ", " +
+                " }";
     }
 
 }

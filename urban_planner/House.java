@@ -10,6 +10,7 @@ public class House extends Building {
     private String color;
 
     public House() {
+        super();
         room = 0;
         owner = "Anonymous";
         color = "None";
@@ -64,11 +65,11 @@ public class House extends Building {
 
     @Override
     public String toString() {
-        return super.toString() + "{" +
-                " room=" + getRoom() + ", " +
+        return super.toString() +
+                "room=" + getRoom() + ", " +
                 "owner=" + getOwner() + ", " +
                 "color=" + getColor() +
-                "}";
+                " }";
     }
 
 }

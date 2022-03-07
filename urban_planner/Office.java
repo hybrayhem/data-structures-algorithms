@@ -18,22 +18,43 @@ public class Office extends Building {
         this.owner = owner;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getJobType() {
         return this.jobType;
     }
 
+    
+    /** 
+     * @param jobType
+     */
     public void setJobType(String jobType) {
         this.jobType = jobType;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getOwner() {
         return this.owner;
     }
 
+    
+    /** 
+     * @param owner
+     */
     public void setOwner(String owner) {
         this.owner = owner;
     }
 
+    
+    /** 
+     * @param o
+     * @return boolean
+     */
     @Override
     public boolean equals(Object o) {
         if (o == this)
@@ -45,11 +66,19 @@ public class Office extends Building {
         return super.equals(office) && (jobType.equals(office.jobType) && owner.equals(office.owner));
     }
 
+    
+    /** 
+     * @return int
+     */
     @Override
     public int hashCode() {
         return (31 * super.hashCode() + Objects.hash(jobType, owner));
     }
 
+    
+    /** 
+     * @return String
+     */
     @Override
     public String toString() {
         return super.toString() +

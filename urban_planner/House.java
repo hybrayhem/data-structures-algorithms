@@ -23,30 +23,59 @@ public class House extends Building {
         this.color = color;
     }
 
+    
+    /** 
+     * @return int
+     */
     public int getRoom() {
         return this.room;
     }
 
+    
+    /** 
+     * @param room
+     */
     public void setRoom(int room) {
         this.room = room;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getOwner() {
         return this.owner;
     }
 
+    
+    /** 
+     * @param owner
+     */
     public void setOwner(String owner) {
         this.owner = owner;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getColor() {
         return this.color;
     }
 
+    
+    /** 
+     * @param color
+     */
     public void setColor(String color) {
         this.color = color;
     }
 
+    
+    /** 
+     * @param o
+     * @return boolean
+     */
     @Override
     public boolean equals(Object o) {
         if (o == this)
@@ -58,11 +87,19 @@ public class House extends Building {
         return super.equals(house) && (room == house.room && owner.equals(house.owner) && color.equals(house.color));
     }
 
+    
+    /** 
+     * @return int
+     */
     @Override
     public int hashCode() {
         return (31 * super.hashCode() + Objects.hash(room, owner, color));
     }
 
+    
+    /** 
+     * @return String
+     */
     @Override
     public String toString() {
         return super.toString() +
@@ -79,13 +116,6 @@ public class House extends Building {
      */
     @Override
     protected House clone() throws CloneNotSupportedException {
-        // House copy = new House(this.getPosition(), this.getLength(), this.getHeight(), this.room, this.owner, this.color);
-        
-        // for (int j = 0; j < copy.getHeight(); j++) {
-        //     for (int i = 0; i < copy.getLength(); i++) {
-        //         copy.viewMatrix[j][i] = this.viewMatrix[j][i];
-        //     }
-        // }
         House copy = (House) super.clone();
         copy.room = this.room;
         copy.owner = this.owner;

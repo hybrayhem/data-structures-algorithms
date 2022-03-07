@@ -23,19 +23,35 @@ public abstract class Building implements Cloneable {
         updateViewMatrix();
     }
 
+    
+    /** 
+     * @return int
+     */
     public int getPosition() {
         return this.position;
     }
 
+    
+    /** 
+     * @param position
+     */
     // TODO: error handling in setters
     public void setPosition(int position) {
         this.position = position;
     }
 
+    
+    /** 
+     * @return int
+     */
     public int getLength() {
         return this.length;
     }
 
+    
+    /** 
+     * @param length
+     */
     public void setLength(int length) {
         int oldLength = this.length;
         this.length = length;
@@ -44,10 +60,18 @@ public abstract class Building implements Cloneable {
             updateViewMatrix();
     }
 
+    
+    /** 
+     * @return int
+     */
     public int getHeight() {
         return this.height;
     }
 
+    
+    /** 
+     * @param height
+     */
     public void setHeight(int height) {
         int oldHeight = this.height;
         this.height = height;
@@ -56,6 +80,11 @@ public abstract class Building implements Cloneable {
             updateViewMatrix();
     }
 
+    
+    /** 
+     * @param o
+     * @return boolean
+     */
     @Override
     public boolean equals(Object o) {
         if (o == this)
@@ -74,11 +103,19 @@ public abstract class Building implements Cloneable {
         return position == building.position && length == building.length && height == building.height;
     }
 
+    
+    /** 
+     * @return int
+     */
     @Override
     public int hashCode() {
         return Objects.hash(position, length, height);
     }
 
+    
+    /** 
+     * @return String
+     */
     @Override
     public String toString() {
         return "{ " +
@@ -87,6 +124,10 @@ public abstract class Building implements Cloneable {
                 " height=" + getHeight() + ", ";
     }
 
+    
+    /** 
+     * @return int[][]
+     */
     public int[][] getViewMatrix() {
         return this.viewMatrix;
     }

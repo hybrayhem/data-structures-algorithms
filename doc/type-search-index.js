@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"urban_planner","l":"Building"},{"p":"urban_planner","l":"House"},{"p":"urban_planner","l":"Market"},{"p":"urban_planner","l":"Office"},{"p":"urban_planner","l":"Playground"}]

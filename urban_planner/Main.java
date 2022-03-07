@@ -1,5 +1,6 @@
 package urban_planner;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 import urban_planner.House;
@@ -52,7 +53,7 @@ class Main {
 
         System.out.println("Modify market2 with setters. (created with clone from market1)");
         market2.setHeight(3);
-        market2.setOwner("Ayae");
+        market2.setOwner("Ayse");
 
         System.out.println(
                 "Compare markets: " + market1.toString() + " vs " + market2.toString() + " = "
@@ -73,11 +74,10 @@ class Main {
         System.out.println(
                 "Compare Playgrounds: " + playground1.toString() + " vs " + playground2.toString() + " = "
                         + playground1.equals(playground2));
-
-    
-    
-    
-    
         System.out.println("\n\n");
+
+
+        office1.printViewMatrix();
+
     }
 }

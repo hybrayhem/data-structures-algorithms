@@ -86,4 +86,18 @@ public class Market extends Building {
                 " }";
     }
 
+    /**
+     * Returns a deep copy of this {@code Market} instance.
+     *
+     * @return a clone of this {@code Market} instance
+     */
+    @Override
+    protected Market clone() throws CloneNotSupportedException {
+        Market copy = (Market) super.clone();
+        copy.openingTime = this.openingTime;
+        copy.closingTime = this.closingTime;
+        copy.owner = this.owner;
+        return copy;
+    }
+
 }

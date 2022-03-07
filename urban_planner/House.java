@@ -72,4 +72,25 @@ public class House extends Building {
                 " }";
     }
 
+    /**
+     * Returns a deep copy of this {@code House} instance.
+     *
+     * @return a clone of this {@code House} instance
+     */
+    @Override
+    protected House clone() throws CloneNotSupportedException {
+        // House copy = new House(this.getPosition(), this.getLength(), this.getHeight(), this.room, this.owner, this.color);
+        
+        // for (int j = 0; j < copy.getHeight(); j++) {
+        //     for (int i = 0; i < copy.getLength(); i++) {
+        //         copy.viewMatrix[j][i] = this.viewMatrix[j][i];
+        //     }
+        // }
+        House copy = (House) super.clone();
+        copy.room = this.room;
+        copy.owner = this.owner;
+        copy.color = this.color;
+        return copy;
+    }
+
 }

@@ -2,18 +2,18 @@ package urban_planner;
 
 import java.util.Objects;
 
-public abstract class Building {
+public abstract class Building implements Cloneable {
     /** Start position of building in street */
     private int position;
     private int length;
     private int height;
-    private int[][] viewMatrix;
+    protected int[][] viewMatrix;
 
     protected Building() {
         position = 0;
         length = 0;
         height = 0;
-        updateViewMatrix();
+        // updateViewMatrix();
     }
 
     protected Building(int position, int length, int height) {
@@ -64,6 +64,13 @@ public abstract class Building {
             return false;
         }
         Building building = (Building) o;
+        // deep compare
+        for (int j = 0; j < height; j++) {
+            for (int i = 0; i < length; i++) {
+                if (building.viewMatrix[j][i] != this.viewMatrix[j][i])
+                    return false;
+            }
+        }
         return position == building.position && length == building.length && height == building.height;
     }
 
@@ -123,11 +130,13 @@ public abstract class Building {
 
     /** print for debug updateViewMatrix function */
     public void printViewMatrix() {
+        System.out.println("\n");
         for (int j = 0; j < height; j++) {
             for (int i = 0; i < length; i++) {
                 System.out.print(viewMatrix[j][i]);
             }
             System.out.print("\n");
         }
+        System.out.println("\n");
     }
 }

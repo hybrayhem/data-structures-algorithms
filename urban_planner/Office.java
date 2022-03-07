@@ -58,4 +58,17 @@ public class Office extends Building {
                 " }";
     }
 
+    /**
+     * Returns a deep copy of this {@code Office} instance.
+     *
+     * @return a clone of this {@code Office} instance
+     */
+    @Override
+    protected Office clone() throws CloneNotSupportedException {
+        Office copy = (Office) super.clone();
+        copy.jobType = this.jobType;
+        copy.owner = this.owner;
+        return copy;
+    }
+
 }

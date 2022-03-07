@@ -16,7 +16,12 @@ class Main {
 
         System.out.println("/* ---------------------------- House initialize ---------------------------- */");
         House house1 = new House(0, 3, 6, 4, "Halil", "Yellow");
-        House house2 = new House(0, 3, 6, 4, "Halil", "Yellow"); // TODO: change with clone
+        House house2 = new House();
+        try {
+            house2 = house1.clone();
+        } catch (CloneNotSupportedException e) {
+            System.out.println("CloneNotSupportedException: can't copy house.");
+        }
         System.out.println(
                 "Compare houses: " + house1.toString() + " vs " + house2.toString() + " = " + house1.equals(house2));
 
@@ -30,7 +35,12 @@ class Main {
         /* ---------------------------- Office initialize --------------------------- */
         System.out.println("\n\n/* ---------------------------- Office initialize ---------------------------- */");
         Office office1 = new Office(15, 10, 20, "Robotics", "Ibrahim");
-        Office office2 = new Office(15, 10, 20, "Robotics", "Ibrahim"); // TODO: change with clone
+        Office office2 = new Office();
+        try {
+            office2 = office1.clone();
+        } catch (CloneNotSupportedException e) {
+            System.out.println("CloneNotSupportedException: can't copy office.");
+        }
         System.out.println(
                 "Compare offices: " + office1.toString() + " vs " + office2.toString() + " = "
                         + office1.equals(office2));
@@ -46,7 +56,12 @@ class Main {
         /* ---------------------------- Market initialize --------------------------- */
         System.out.println("\n\n/* ---------------------------- Market initialize ---------------------------- */");
         Market market1 = new Market(40, 10, 2, "9:00", "22:00", "Halil");
-        Market market2 = new Market(40, 10, 2, "9:00", "22:00", "Halil"); // TODO: change with clone
+        Market market2 = new Market();
+        try {
+            market2 = market1.clone();
+        } catch (CloneNotSupportedException e) {
+            System.out.println("CloneNotSupportedException: can't copy market.");
+        }
         System.out.println(
                 "Compare markets: " + market1.toString() + " vs " + market2.toString() + " = "
                         + market1.equals(market2));
@@ -62,7 +77,12 @@ class Main {
         /* -------------------------- Playground initialize ------------------------- */
         System.out.println("\n\n/* ---------------------------- Playground initialize ---------------------------- */");
         Playground playground1 = new Playground(35, 10, 1);
-        Playground playground2 = new Playground(35, 10, 1); // TODO: change with clone
+        Playground playground2 = new Playground();
+        try {
+            playground2 = playground1.clone();
+        } catch (CloneNotSupportedException e) {
+            System.out.println("CloneNotSupportedException: can't copy playground.");
+        }
         System.out.println(
                 "Compare Playgrounds: " + playground1.toString() + " vs " + playground2.toString() + " = "
                         + playground1.equals(playground2));
@@ -76,8 +96,18 @@ class Main {
                         + playground1.equals(playground2));
         System.out.println("\n\n");
 
+        /* ------------------------ Test clone with deep copy ----------------------- */
+        house1.printViewMatrix();
+        house2.printViewMatrix();
+        try {
+            house2 = house1.clone();
+        } catch (CloneNotSupportedException e) {
 
-        office1.printViewMatrix();
+        }
+        System.out.println(
+                "Compare houses: " + house1.toString() + " vs " + house2.toString() + " = " + house1.equals(house2));
+        house1.printViewMatrix();
+        house2.printViewMatrix();
 
     }
 }

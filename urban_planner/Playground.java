@@ -30,4 +30,16 @@ public class Playground extends Building {
     public String toString() {
         return super.toString();
     }
+
+    /**
+     * Returns a deep copy of this {@code Playground} instance.
+     *
+     * @return a clone of this {@code Playground} instance
+     */
+    @Override
+    protected Playground clone() throws CloneNotSupportedException {
+        Playground copy = (Playground) super.clone();
+        return copy;
+    }
+
 }

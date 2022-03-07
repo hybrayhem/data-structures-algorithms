@@ -10,6 +10,11 @@ public class Playground extends Building {
         super(position, length, height);
     }
 
+    
+    /** 
+     * @param o
+     * @return boolean
+     */
     @Override
     public boolean equals(Object o) {
         if (o == this)
@@ -21,11 +26,19 @@ public class Playground extends Building {
         return super.equals(playground);
     }
 
+    
+    /** 
+     * @return int
+     */
     @Override
     public int hashCode() {
         return 31 * super.hashCode();
     }
 
+    
+    /** 
+     * @return String
+     */
     @Override
     public String toString() {
         return super.toString() + " }";

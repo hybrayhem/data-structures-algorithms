@@ -8,6 +8,13 @@ import urban_planner.Market;
 import urban_planner.Playground;
 
 class Main {
+    
+    /** 
+     * @param msg
+     * @param lower
+     * @param upper
+     * @return int
+     */
     // secure input function that gets the int selection for menu with a
     // bullet-proof
     // error handling
@@ -31,6 +38,11 @@ class Main {
         return selection;
     }
 
+    
+    /** 
+     * @param street
+     * @return int
+     */
     public static int buildingNumber(Building[] street) {
         int num = 0;
         for (int i = 0; street[i] != null; i++) {
@@ -39,6 +51,12 @@ class Main {
         return num;
     }
 
+    
+    /** 
+     * @param street
+     * @param building
+     * @return Building[]
+     */
     public static Building[] add(Building[] street, Building building) {
         int size = buildingNumber(street);
         Building[] tempStreet = new Building[size + 2];
@@ -51,6 +69,11 @@ class Main {
         return tempStreet;
     }
 
+    
+    /** 
+     * @param street
+     * @param index
+     */
     public static void delete(Building[] street, int index) {
         int size = buildingNumber(street);
         if (index > size - 1)
@@ -61,12 +84,21 @@ class Main {
         }
     }
 
+    
+    /** 
+     * @param street
+     */
     public static void listBuildings(Building[] street) {
         for (int i = 0; i < buildingNumber(street); i++) {
             System.out.println((i + 1) + ". " + street[i].toString());
         }
     }
 
+    
+    /** 
+     * @param street
+     * @return int
+     */
     public static int maxStreetHeigth(Building[] street) {
         int res = 0;
         for (int i = 0; i < buildingNumber(street); i++) {
@@ -76,6 +108,11 @@ class Main {
         return res;
     }
 
+    
+    /** 
+     * @param street
+     * @return int
+     */
     public static int maxStreetLength(Building[] street) {
         int res = 0;
         for (int i = 0; i < buildingNumber(street); i++) {
@@ -85,6 +122,11 @@ class Main {
         return res;
     }
 
+    
+    /** 
+     * @param street
+     * @return int[][]
+     */
     public static int[][] streetViewMatrix(Building[] street) {
         int[][] streetView = new int[maxStreetHeigth(street)][maxStreetLength(street)];
         for (int j = 0; j < maxStreetHeigth(street); j++) {
@@ -108,6 +150,11 @@ class Main {
         return streetView;
     }
 
+    
+    /** 
+     * @param street
+     * @return int[][]
+     */
     public static int[][] silhouetteViewMatrix(Building[] street) {
         int[][] streetView = new int[maxStreetHeigth(street)][maxStreetLength(street)];
         for (int j = 0; j < maxStreetHeigth(street); j++) {
@@ -127,6 +174,11 @@ class Main {
         return streetView;
     }
 
+    
+    /** 
+     * @param viewMatrix
+     * @param street
+     */
     public static void printViewMatrix(int[][] viewMatrix, Building[] street) {
         for (int j = 0; j < maxStreetHeigth(street); j++) {
             for (int i = 0; i < maxStreetLength(street); i++) {
@@ -142,6 +194,12 @@ class Main {
         }
     }
 
+    
+    /** 
+     * @param viewMatrix
+     * @param street
+     * @return int
+     */
     public static int emptyLand(int[][] viewMatrix, Building[] street) {
         int res = 0;
         for (int i = 0; i < maxStreetLength(street); i++) {
@@ -152,6 +210,11 @@ class Main {
         return res;
     }
 
+    
+    /** 
+     * @param street
+     * @return int
+     */
     public static int playgroundNumber(Building[] street) {
         int res = 0;
         for (int i = 0; i < buildingNumber(street); i++) {
@@ -161,6 +224,11 @@ class Main {
         return res;
     }
 
+    
+    /** 
+     * @param street
+     * @return int
+     */
     public static int totalWithoutPlayground(Building[] street) {
         Building[] tempStreet = { null };
         for (int i = 0; i < buildingNumber(street); i++) {
@@ -171,6 +239,10 @@ class Main {
         return maxStreetLength(tempStreet) - emptyLand(silhouetteViewMatrix(tempStreet), tempStreet);
     }
 
+    
+    /** 
+     * @param args
+     */
     public static void main(String[] args) {
         System.out.println("/* -------------------------------------------------------------------------- */\n" +
                 "/*                           Class Initialize Tests                           */\n" +

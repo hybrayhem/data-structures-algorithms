@@ -1,6 +1,5 @@
 package urban_planner;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 import urban_planner.House;
@@ -9,9 +8,50 @@ import urban_planner.Market;
 import urban_planner.Playground;
 
 class Main {
+    public static int buildingNumber(Building[] street) {
+        int num = 0;
+        for (int i = 0; street[i] != null; i++) {
+            num++;
+        }
+        return num;
+    }
+
+    public static Building[] add(Building[] street, Building building) {
+        int size = buildingNumber(street);
+        Building[] tempStreet = new Building[size + 2];
+        for (int i = 0; i < size; i++) {
+            tempStreet[i] = street[i];
+        }
+        tempStreet[size] = building; // add new element
+        tempStreet[size + 1] = null; // null value as end indicator
+
+        return tempStreet;
+    }
+
+    public static void delete(Building[] street, int index) {
+        int size = buildingNumber(street);
+        if(index > size - 1)
+            throw new IndexOutOfBoundsException("Index not exists in street.");
+        
+        for (int i = index; i < size; i++) {
+            street[i] = street[i+1];
+        }
+    }
+    
+    public static void listBuildings(Building[] street){
+        for (int i = 0; i < buildingNumber(street); i++) {
+            System.out.println(street[i].toString());
+        }
+    }
+    //print street
+    // get_selection
+    // streetview matrix max position max heiht lazim
+    // silhouette matrix
+    // print matrix
+
     public static void main(String[] args) {
         System.out.println("/* -------------------------------------------------------------------------- */\n" +
-                "/*                              Initialize tests                              */\n" +
+                "/*                           Class Initialize Tests                           */\n" +
                 "/* -------------------------------------------------------------------------- */\n");
 
         System.out.println("/* ---------------------------- House initialize ---------------------------- */");
@@ -96,18 +136,33 @@ class Main {
                         + playground1.equals(playground2));
         System.out.println("\n\n");
 
-        /* ------------------------ Test clone with deep copy ----------------------- */
-        house1.printViewMatrix();
-        house2.printViewMatrix();
-        try {
-            house2 = house1.clone();
-        } catch (CloneNotSupportedException e) {
+        /* -------------------------------------------------------------------------- */
+        /*                         Street Test with Auto input                        */
+        /* -------------------------------------------------------------------------- */
+        Building[] street = { null };
 
+        
+        /* ------------------------------- Initialize ------------------------------- */
+        street = add(street, house1);
+        street = add(street, house2);
+        System.out.println("Total number of buildings(after adding two house): " + buildingNumber(street));
+        listBuildings(street);
+        
+        try {
+            delete(street, 0);
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("IndexOutOfBoundsException: " + e.getMessage());
         }
-        System.out.println(
-                "Compare houses: " + house1.toString() + " vs " + house2.toString() + " = " + house1.equals(house2));
-        house1.printViewMatrix();
-        house2.printViewMatrix();
+        System.out.println("Total number of buildings(delete first house): " + buildingNumber(street));
+        listBuildings(street);
+
+
+        /* -------------------------------- Edit mode ------------------------------- */
+        /* -------------------------------- View Mode ------------------------------- */
+
+        /* -------------------------------------------------------------------------- */
+        /*                          Street Test with User input                       */
+        /* -------------------------------------------------------------------------- */
 
     }
 }

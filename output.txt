@@ -1,0 +1,14 @@
+
+Recursive
+
+array lenght = 5, T(n) = 4.0 microsecond
+array lenght = 10, T(n) = 4.4 microsecond
+array lenght = 15, T(n) = 9.2 microsecond
+array lenght = 20, T(n) = 27.3 microsecond
+array lenght = 25, T(n) = 7.3 microsecond
+array lenght = 30, T(n) = 29.3 microsecond
+array lenght = 35, T(n) = 12.2 microsecond
+array lenght = 40, T(n) = 40.7 microsecond
+array lenght = 45, T(n) = 15.1 microsecond
+array lenght = 50, T(n) = 39.9 microsecond
+

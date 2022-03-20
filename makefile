@@ -14,7 +14,8 @@ CLASSES = \
         urban_planner/Office.java \
         urban_planner/Playground.java  \
         urban_planner/StreetArray.java \
-        urban_planner/StreetArrayList.java
+        urban_planner/StreetArrayList.java \
+        urban_planner/StreetLinkedList.java
 
 default: classes
 

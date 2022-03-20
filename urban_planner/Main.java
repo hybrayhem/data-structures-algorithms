@@ -3,6 +3,8 @@ package urban_planner;
 import java.util.Scanner;
 
 import urban_planner.StreetArray;
+import urban_planner.StreetArrayList;
+import urban_planner.StreetLinkedList;
 import urban_planner.House;
 import urban_planner.Office;
 import urban_planner.Market;
@@ -145,7 +147,9 @@ class Main {
         /* -------------------------------------------------------------------------- */
         /* Street Test with Auto input */
         /* -------------------------------------------------------------------------- */
-        StreetArrayList street = new StreetArrayList();
+        // StreetArray street = new StreetArray();
+        // StreetArrayList street = new StreetArrayList();
+        StreetLinkedList street = new StreetLinkedList();
 
         System.out.println("/* ---------------------------- Initialize Street ---------------------------- */");
         street.add(house1);

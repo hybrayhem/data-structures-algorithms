@@ -12,6 +12,11 @@ public class StreetLinkedList {
     }
 
     
+    
+    /** 
+     * @param index
+     * @return Building
+     */
     public Building getBuilding(int index){
         if(index >= 0 && index < buildings.size()){
             return buildings.get(index);
@@ -19,14 +24,26 @@ public class StreetLinkedList {
         return null;
     }
 
+    
+    /** 
+     * @return int
+     */
     public int buildingNumber() {
         return buildings.size();
     }
 
+    
+    /** 
+     * @param building
+     */
     public void add(Building building) {
         buildings.add(building);
     }
 
+    
+    /** 
+     * @param index
+     */
     public void delete(int index) {
         buildings.remove(index);
     }
@@ -37,6 +54,10 @@ public class StreetLinkedList {
         }
     }
 
+    
+    /** 
+     * @return int
+     */
     public int maxStreetHeigth() {
         int res = 0;
         for (int i = 0; i < buildings.size(); i++) {
@@ -46,6 +67,10 @@ public class StreetLinkedList {
         return res;
     }
 
+    
+    /** 
+     * @return int
+     */
     public int maxStreetLength() {
         int res = 0;
         for (int i = 0; i < buildings.size(); i++) {
@@ -55,6 +80,10 @@ public class StreetLinkedList {
         return res;
     }
 
+    
+    /** 
+     * @return int[][]
+     */
     public int[][] streetViewMatrix() {
         int[][] streetView = new int[maxStreetHeigth()][maxStreetLength()];
         for (int j = 0; j < maxStreetHeigth(); j++) {
@@ -78,6 +107,10 @@ public class StreetLinkedList {
         return streetView;
     }
 
+    
+    /** 
+     * @return int[][]
+     */
     public int[][] silhouetteViewMatrix() {
         int[][] streetView = new int[maxStreetHeigth()][maxStreetLength()];
         for (int j = 0; j < maxStreetHeigth(); j++) {
@@ -97,6 +130,10 @@ public class StreetLinkedList {
         return streetView;
     }
 
+    
+    /** 
+     * @param viewMatrix
+     */
     public void printViewMatrix(int[][] viewMatrix) {
         try {
             PrintStream out = new PrintStream(System.out, true, "UTF-8");
@@ -131,6 +168,11 @@ public class StreetLinkedList {
         }
     }
 
+    
+    /** 
+     * @param viewMatrix
+     * @return int
+     */
     public int emptyLand(int[][] viewMatrix) {
         int res = 0;
         for (int i = 0; i < maxStreetLength(); i++) {
@@ -141,6 +183,10 @@ public class StreetLinkedList {
         return res;
     }
 
+    
+    /** 
+     * @return int
+     */
     public int playgroundNumber() {
         int res = 0;
         for (int i = 0; i < buildings.size(); i++) {
@@ -150,6 +196,10 @@ public class StreetLinkedList {
         return res;
     }
 
+    
+    /** 
+     * @return int
+     */
     public int totalWithoutPlayground() {
         StreetLinkedList tempStreet = new StreetLinkedList();
         for (int i = 0; i < buildings.size(); i++) {

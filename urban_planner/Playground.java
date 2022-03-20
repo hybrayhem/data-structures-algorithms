@@ -55,6 +55,10 @@ public class Playground extends Building {
         return copy;
     }
 
+    
+    /** 
+     * @return String
+     */
     @Override
     public String focus() {
         return "Playground don't have a focus.";

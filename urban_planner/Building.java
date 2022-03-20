@@ -81,6 +81,11 @@ public abstract class Building implements Cloneable {
     }
 
 
+    
+    /** 
+     * @param o
+     * @return String
+     */
     /**
      * Abstract method overriden in subclasses
      * @return value of focus field, differs by instance type

@@ -12,7 +12,8 @@ CLASSES = \
         urban_planner/House.java \
         urban_planner/Market.java \
         urban_planner/Office.java \
-        urban_planner/Playground.java 
+        urban_planner/Playground.java  \
+        urban_planner/Street.java
 
 default: classes
 

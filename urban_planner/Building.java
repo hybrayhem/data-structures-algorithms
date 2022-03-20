@@ -18,8 +18,8 @@ public abstract class Building implements Cloneable {
 
     protected Building(int position, int length, int height) {
         this.position = position;
-        this.length = length;
-        this.height = height;
+        this.length = length + 1;
+        this.height = height + 1;
         updateViewMatrix();
     }
 
@@ -54,7 +54,7 @@ public abstract class Building implements Cloneable {
      */
     public void setLength(int length) {
         int oldLength = this.length;
-        this.length = length;
+        this.length = length + 1;
 
         if (length != oldLength)
             updateViewMatrix();
@@ -74,7 +74,7 @@ public abstract class Building implements Cloneable {
      */
     public void setHeight(int height) {
         int oldHeight = this.height;
-        this.height = height;
+        this.height = height + 1;
 
         if (height != oldHeight)
             updateViewMatrix();
@@ -120,8 +120,8 @@ public abstract class Building implements Cloneable {
     public String toString() {
         return "{ " +
                 " position=" + getPosition() + ", " +
-                " length=" + getLength() + ", " +
-                " height=" + getHeight() + ", ";
+                " length=" + (getLength() - 1) + ", " +
+                " height=" + (getHeight() - 1) + ", ";
     }
 
     

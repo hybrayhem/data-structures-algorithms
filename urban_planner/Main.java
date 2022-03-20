@@ -5,6 +5,7 @@ import java.util.Scanner;
 import urban_planner.StreetArray;
 import urban_planner.StreetArrayList;
 import urban_planner.StreetLinkedList;
+import urban_planner.StreetLDLinkedList;
 import urban_planner.House;
 import urban_planner.Office;
 import urban_planner.Market;
@@ -149,7 +150,7 @@ class Main {
         /* -------------------------------------------------------------------------- */
         // StreetArray street = new StreetArray();
         // StreetArrayList street = new StreetArrayList();
-        StreetLinkedList street = new StreetLinkedList();
+        StreetLDLinkedList street = new StreetLDLinkedList();
 
         System.out.println("/* ---------------------------- Initialize Street ---------------------------- */");
         street.add(house1);

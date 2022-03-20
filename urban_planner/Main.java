@@ -2,6 +2,7 @@ package urban_planner;
 
 import java.util.Scanner;
 
+import urban_planner.Street;
 import urban_planner.House;
 import urban_planner.Office;
 import urban_planner.Market;
@@ -38,218 +39,19 @@ class Main {
         return selection;
     }
 
-    
-    /** 
-     * @param street
-     * @return int
-     */
-    public static int buildingNumber(Building[] street) {
-        int num = 0;
-        for (int i = 0; street[i] != null; i++) {
-            num++;
-        }
-        return num;
-    }
-
-    
-    /** 
-     * @param street
-     * @param building
-     * @return Building[]
-     */
-    public static Building[] add(Building[] street, Building building) {
-        int size = buildingNumber(street);
-        Building[] tempStreet = new Building[size + 2];
-        for (int i = 0; i < size; i++) {
-            tempStreet[i] = street[i];
-        }
-        tempStreet[size] = building; // add new element
-        tempStreet[size + 1] = null; // null value as end indicator
-
-        return tempStreet;
-    }
-
-    
-    /** 
-     * @param street
-     * @param index
-     */
-    public static void delete(Building[] street, int index) {
-        int size = buildingNumber(street);
-        if (index > size - 1)
-            throw new IndexOutOfBoundsException("Index not exists in street.");
-
-        for (int i = index; i < size; i++) {
-            street[i] = street[i + 1];
-        }
-    }
-
-    
-    /** 
-     * @param street
-     */
-    public static void listBuildings(Building[] street) {
-        for (int i = 0; i < buildingNumber(street); i++) {
-            System.out.println((i + 1) + ". " + street[i].toString());
-        }
-    }
-
-    
-    /** 
-     * @param street
-     * @return int
-     */
-    public static int maxStreetHeigth(Building[] street) {
-        int res = 0;
-        for (int i = 0; i < buildingNumber(street); i++) {
-            if (street[i].getHeight() > res)
-                res = street[i].getHeight();
-        }
-        return res;
-    }
-
-    
-    /** 
-     * @param street
-     * @return int
-     */
-    public static int maxStreetLength(Building[] street) {
-        int res = 0;
-        for (int i = 0; i < buildingNumber(street); i++) {
-            if (street[i].getPosition() + street[i].getLength() > res)
-                res = street[i].getPosition() + street[i].getLength();
-        }
-        return res;
-    }
-
-    
-    /** 
-     * @param street
-     * @return int[][]
-     */
-    public static int[][] streetViewMatrix(Building[] street) {
-        int[][] streetView = new int[maxStreetHeigth(street)][maxStreetLength(street)];
-        for (int j = 0; j < maxStreetHeigth(street); j++) {
-            for (int i = 0; i < maxStreetLength(street); i++) {
-                streetView[j][i] = 3;
-            }
-        }
-        for (int i = 0; i < buildingNumber(street); i++) {
-            for (int j = 0; j < street[i].getHeight(); j++) {
-                for (int k = 0; k < street[i].getLength(); k++) {
-                    int currentVal = streetView[j + maxStreetHeigth(street) - street[i].getHeight()][k
-                            + street[i].getPosition()];
-                    int newVal = street[i].viewMatrix[j][k];
-                    if (currentVal == 2 || currentVal == 3)
-                        streetView[j + maxStreetHeigth(street) - street[i].getHeight()][k
-                                + street[i].getPosition()] = newVal;
-                }
-            }
-        }
-
-        return streetView;
-    }
-
-    
-    /** 
-     * @param street
-     * @return int[][]
-     */
-    public static int[][] silhouetteViewMatrix(Building[] street) {
-        int[][] streetView = new int[maxStreetHeigth(street)][maxStreetLength(street)];
-        for (int j = 0; j < maxStreetHeigth(street); j++) {
-            for (int i = 0; i < maxStreetLength(street); i++) {
-                streetView[j][i] = 3;
-            }
-        }
-        for (int i = 0; i < buildingNumber(street); i++) {
-            for (int j = 0; j < street[i].getHeight(); j++) {
-                for (int k = 0; k < street[i].getLength(); k++) {
-                    streetView[j + maxStreetHeigth(street) - street[i].getHeight()][k
-                            + street[i].getPosition()] = street[i].viewMatrix[j][k];
-                }
-            }
-        }
-
-        return streetView;
-    }
-
-    
-    /** 
-     * @param viewMatrix
-     * @param street
-     */
-    public static void printViewMatrix(int[][] viewMatrix, Building[] street) {
-        for (int j = 0; j < maxStreetHeigth(street); j++) {
-            for (int i = 0; i < maxStreetLength(street); i++) {
-                if (viewMatrix[j][i] == 3 || viewMatrix[j][i] == 2) {
-                    System.out.print(" ");
-                } else if (viewMatrix[j][i] == 0) {
-                    System.out.print("*");
-                } else if (viewMatrix[j][i] == 1) {
-                    System.out.print("#");
-                }
-            }
-            System.out.print("\n");
-        }
-    }
-
-    
-    /** 
-     * @param viewMatrix
-     * @param street
-     * @return int
-     */
-    public static int emptyLand(int[][] viewMatrix, Building[] street) {
-        int res = 0;
-        for (int i = 0; i < maxStreetLength(street); i++) {
-            // count spaces on land
-            if (viewMatrix[maxStreetHeigth(street) - 1][i] > 1)
-                res++;
-        }
-        return res;
-    }
-
-    
-    /** 
-     * @param street
-     * @return int
-     */
-    public static int playgroundNumber(Building[] street) {
-        int res = 0;
-        for (int i = 0; i < buildingNumber(street); i++) {
-            if (street[i] instanceof Playground)
-                res++;
-        }
-        return res;
-    }
-
-    
-    /** 
-     * @param street
-     * @return int
-     */
-    public static int totalWithoutPlayground(Building[] street) {
-        Building[] tempStreet = { null };
-        for (int i = 0; i < buildingNumber(street); i++) {
-            if (!(street[i] instanceof Playground))
-                tempStreet = add(tempStreet, street[i]);
-        }
-
-        return maxStreetLength(tempStreet) - emptyLand(silhouetteViewMatrix(tempStreet), tempStreet);
-    }
 
     
     /** 
      * @param args
      */
     public static void main(String[] args) {
+        // buildings = [[2,7,10],[3,4,15],[5,7,12],[15,5,10],[19,5,8]]
         System.out.println("/* -------------------------------------------------------------------------- */\n" +
                 "/*                           Class Initialize Tests                           */\n" +
                 "/* -------------------------------------------------------------------------- */\n");
 
         System.out.println("/* ---------------------------- House initialize ---------------------------- */");
-        House house1 = new House(0, 4, 6, 4, "Halil", "Yellow");
+        House house1 = new House(2, 6, 10, 4, "Halil", "Yellow");
         House house2 = new House();
         try {
             house2 = house1.clone();
@@ -260,8 +62,9 @@ class Main {
                 "Compare houses: " + house1.toString() + " vs " + house2.toString() + " = " + house1.equals(house2));
 
         System.out.println("Modify house2 with setters. (created with clone from house1)");
-        house2.setHeight(12);
-        house2.setPosition(6);
+        house2.setPosition(3);
+        house2.setLength(3);
+        house2.setHeight(15);
         house2.setOwner("Mehmet");
 
         System.out.println(
@@ -269,7 +72,7 @@ class Main {
 
         /* ---------------------------- Office initialize --------------------------- */
         System.out.println("\n\n/* ---------------------------- Office initialize ---------------------------- */");
-        Office office1 = new Office(15, 10, 20, "Robotics", "Ibrahim");
+        Office office1 = new Office(5, 7, 12, "Robotics", "Ibrahim");
         Office office2 = new Office();
         try {
             office2 = office1.clone();
@@ -281,8 +84,10 @@ class Main {
                         + office1.equals(office2));
 
         System.out.println("Modify office2 with setters. (created with clone from office1)");
-        office2.setPosition(20);
-        office2.setHeight(30);
+        office2.setPosition(15);
+        office2.setLength(5);
+        office2.setHeight(10);
+        office2.setJobType("Web Development");
         office2.setJobType("Web Development");
         office2.setOwner("Ilhan");
 
@@ -292,7 +97,7 @@ class Main {
 
         /* ---------------------------- Market initialize --------------------------- */
         System.out.println("\n\n/* ---------------------------- Market initialize ---------------------------- */");
-        Market market1 = new Market(40, 10, 2, "9:00", "22:00", "Halil");
+        Market market1 = new Market(19, 5, 8, "9:00", "22:00", "Halil");
         Market market2 = new Market();
         try {
             market2 = market1.clone();
@@ -304,8 +109,9 @@ class Main {
                         + market1.equals(market2));
 
         System.out.println("Modify market2 with setters. (created with clone from market1)");
-        market2.setHeight(3);
-        market2.setPosition(45);
+        office2.setPosition(23);
+        office2.setLength(6);
+        office2.setHeight(18);
         market2.setOwner("Ayse");
 
         System.out.println(
@@ -314,7 +120,7 @@ class Main {
 
         /* -------------------------- Playground initialize ------------------------- */
         System.out.println("\n\n/* ---------------------------- Playground initialize ---------------------------- */");
-        Playground playground1 = new Playground(35, 10, 1);
+        Playground playground1 = new Playground(14, 3, 0);
         Playground playground2 = new Playground();
         try {
             playground2 = playground1.clone();
@@ -327,8 +133,9 @@ class Main {
 
         System.out.println(
                 "Modify Playground2 (created with clone from Playground1) with setters. (created with clone from Playground1)");
-        playground2.setLength(15);
-        playground2.setPosition(55);
+        playground2.setPosition(32);
+        playground2.setLength(5);
+        playground2.setHeight(0);
 
         System.out.println(
                 "Compare Playgrounds: " + playground1.toString() + " vs " + playground2.toString() + " = "
@@ -338,57 +145,61 @@ class Main {
         /* -------------------------------------------------------------------------- */
         /* Street Test with Auto input */
         /* -------------------------------------------------------------------------- */
-        Building[] street = { null };
+        Street street = new Street();
 
         System.out.println("/* ---------------------------- Initialize Street ---------------------------- */");
-        street = add(street, house1);
-        street = add(street, house2);
-        System.out.println("Total number of buildings(after adding two house): " + buildingNumber(street));
-        listBuildings(street);
+        street.add(house1);
+        
+        street.add(house2);
+        System.out.println("Total number of buildings(after adding two house): " + street.buildingNumber());
+        street.listBuildings();
 
         try {
-            delete(street, 0);
+            street.delete(0);
         } catch (IndexOutOfBoundsException e) {
             System.out.println("IndexOutOfBoundsException: " + e.getMessage());
         }
-        System.out.println("Total number of buildings(delete first house): " + buildingNumber(street));
-        listBuildings(street);
+        System.out.println("Total number of buildings(delete first house): " + street.buildingNumber());
+        street.listBuildings();
 
         System.out.println("\n\n/* -------------------------------- Edit mode ------------------------------- */");
-        street = add(street, house1);
-        street = add(street, office1);
-        street = add(street, office2);
-        street = add(street, market1);
-        street = add(street, market2);
-        street = add(street, playground1);
-        street = add(street, playground2);
-        System.out.println("Total number of buildings(add 7 more building): " + buildingNumber(street));
+        street.add(house1);
+        street.add(office1);
+        street.add(office2);
+        street.add(market1);
+        street.add(market2);
+        street.add(playground1);
+        street.add(playground2);
+        System.out.println("Total number of buildings(add 7 more building): " + street.buildingNumber());
 
         System.out.println("\nStreet View\n");
-        printViewMatrix(streetViewMatrix(street), street);
-
+        street.printViewMatrix(street.streetViewMatrix());
+        
         try {
-            delete(street, 0);
-            delete(street, 4);
+            street.delete(0);
+            street.delete(4);
         } catch (IndexOutOfBoundsException e) {
             System.out.println("IndexOutOfBoundsException: " + e.getMessage());
         }
-        System.out.println("\nTotal number of buildings(delete house1 and office2): " + buildingNumber(street));
+        System.out.println("\nTotal number of buildings(delete house1 and office2): " + street.buildingNumber());
         System.out.println("\nStreet View\n");
-        printViewMatrix(streetViewMatrix(street), street);
-
+        street.printViewMatrix(street.streetViewMatrix());
+        
         System.out.println("\n\n/* -------------------------------- View mode ------------------------------- */");
         System.out.println("\nSilhouette View\n");
-        printViewMatrix(silhouetteViewMatrix(street), street);
+        street.printViewMatrix(street.silhouetteViewMatrix());
 
         System.out.println(
-                "\nTotal remaining length of lands on the street: " + emptyLand(silhouetteViewMatrix(street), street));
+                "\nTotal remaining length of lands on the street: " + street.emptyLand(street.silhouetteViewMatrix()));
         System.out.println("\n\nList of buildings:");
-        listBuildings(street);
-        System.out.println("Number of playgrounds: " + playgroundNumber(street));
-        System.out.println("Ratio of length of playgrounds: " + (maxStreetLength(street) - emptyLand(silhouetteViewMatrix(street), street) - totalWithoutPlayground(street)) + " / " + maxStreetLength(street));
+        street.listBuildings();
+        System.out.println("Number of playgrounds: " + street.playgroundNumber());
 
-        System.out.println("Total length of markets, houses or offices: " + totalWithoutPlayground(street));
+        int totalLen = street.maxStreetLength();
+        int withoutPlaygroundLen = street.totalWithoutPlayground();
+        System.out.println("Ratio of length of playgrounds: " + (totalLen - withoutPlaygroundLen) + " / " + totalLen);
+
+        System.out.println("Total length of markets, houses or offices: " + withoutPlaygroundLen);
 
         /* ------------------------------- Focus Mode ------------------------------- */
 

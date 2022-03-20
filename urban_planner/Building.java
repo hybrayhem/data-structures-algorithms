@@ -80,6 +80,13 @@ public abstract class Building implements Cloneable {
             updateViewMatrix();
     }
 
+
+    /**
+     * Abstract method overriden in subclasses
+     * @return value of focus field, differs by instance type
+     */
+    public abstract String focus();
+
     
     /** 
      * @param o

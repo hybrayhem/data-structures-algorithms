@@ -4,12 +4,24 @@ import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 
-public class Street {
+public class StreetArray {
     private Building[] buildings = { null };
     int size = 0;
 
-    public Street() {
+    public StreetArray() {
         // Intentionally left empty
+    }
+
+    
+    /** 
+     * @param index
+     * @return Building
+     */
+    public Building getBuilding(int index){
+        if(index > 0 && index < size){
+            return buildings[index];
+        }
+        return null;
     }
 
     /**
@@ -36,12 +48,8 @@ public class Street {
         tempStreet[size] = building; // add new element
         tempStreet[size + 1] = null; // null value as end indicator
 
-        // System.out.println("tempStreet");
-        // System.out.println(tempStreet[size].toString());
         this.buildings = tempStreet;
         size++;
-        // System.out.println("buildings");
-        // System.out.println(this.buildings[size].toString());
     }
 
     /**
@@ -144,7 +152,7 @@ public class Street {
             PrintStream out = new PrintStream(System.out, true, "UTF-8");
 
             for (int j = 0; j < maxStreetHeigth(); j++) {
-                System.out.printf("%-3d|", maxStreetHeigth() - j - 1);  // height column
+                System.out.printf("%-3d|", maxStreetHeigth() - j - 1); // height column
                 for (int i = 0; i < maxStreetLength(); i++) {
                     if (viewMatrix[j][i] == 3 || viewMatrix[j][i] == 2) {
                         System.out.print("   ");
@@ -158,12 +166,12 @@ public class Street {
             }
             // footer line
             System.out.print("    ");
-            for(int i = 0; i < maxStreetLength(); i++) {
+            for (int i = 0; i < maxStreetLength(); i++) {
                 System.out.printf("___", i);
             }
             // footer numbers
             System.out.print("\n    ");
-            for(int i = 0; i < maxStreetLength(); i++) {
+            for (int i = 0; i < maxStreetLength(); i++) {
                 System.out.printf("%-2d ", i);
             }
 
@@ -203,7 +211,7 @@ public class Street {
      * @return int
      */
     public int totalWithoutPlayground() {
-        Street tempStreet = new Street();
+        StreetArray tempStreet = new StreetArray();
         for (int i = 0; i < size; i++) {
             if (!(buildings[i] instanceof Playground))
                 tempStreet.add(buildings[i]);

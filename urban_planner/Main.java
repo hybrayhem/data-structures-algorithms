@@ -2,7 +2,7 @@ package urban_planner;
 
 import java.util.Scanner;
 
-import urban_planner.Street;
+import urban_planner.StreetArray;
 import urban_planner.House;
 import urban_planner.Office;
 import urban_planner.Market;
@@ -145,7 +145,7 @@ class Main {
         /* -------------------------------------------------------------------------- */
         /* Street Test with Auto input */
         /* -------------------------------------------------------------------------- */
-        Street street = new Street();
+        StreetArray street = new StreetArray();
 
         System.out.println("/* ---------------------------- Initialize Street ---------------------------- */");
         street.add(house1);
@@ -202,6 +202,10 @@ class Main {
         System.out.println("Total length of markets, houses or offices: " + withoutPlaygroundLen);
 
         /* ------------------------------- Focus Mode ------------------------------- */
+        System.out.println("\n\n/* ---------------------------- Focus Mode ---------------------------- */");
+        street.listBuildings();
+        int selection = get_selection("Select a building to focus:", 1, street.buildingNumber());
+        System.out.println("Focused: " + street.getBuilding(selection - 1).focus());
 
         /* -------------------------------------------------------------------------- */
         /* Street Test with User input */

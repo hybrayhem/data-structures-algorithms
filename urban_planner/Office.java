@@ -52,6 +52,15 @@ public class Office extends Building {
 
     
     /** 
+     * @return String
+     */
+    @Override
+    public String focus() {
+        return this.jobType;
+    }
+
+    
+    /** 
      * @param o
      * @return boolean
      */

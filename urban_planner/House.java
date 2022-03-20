@@ -71,6 +71,15 @@ public class House extends Building {
         this.color = color;
     }
 
+
+    /** 
+     * @return String
+     */
+    @Override
+    public String focus() {
+        return this.owner;
+    }
+
     
     /** 
      * @param o

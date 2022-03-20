@@ -55,4 +55,9 @@ public class Playground extends Building {
         return copy;
     }
 
+    @Override
+    public String focus() {
+        return "Playground don't have a focus.";
+    }
+
 }

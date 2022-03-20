@@ -101,6 +101,15 @@ public class Market extends Building {
 
     
     /** 
+     * @return String
+     */
+    @Override
+    public String focus() {
+        return this.closingTime;
+    }
+
+    
+    /** 
      * @param o
      * @return boolean
      */

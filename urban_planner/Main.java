@@ -145,7 +145,7 @@ class Main {
         /* -------------------------------------------------------------------------- */
         /* Street Test with Auto input */
         /* -------------------------------------------------------------------------- */
-        StreetArray street = new StreetArray();
+        StreetArrayList street = new StreetArrayList();
 
         System.out.println("/* ---------------------------- Initialize Street ---------------------------- */");
         street.add(house1);

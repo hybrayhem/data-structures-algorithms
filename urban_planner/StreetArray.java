@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 public class StreetArray {
     private Building[] buildings = { null };
-    int size = 0;
+    private int size = 0;
 
     public StreetArray() {
         // Intentionally left empty
@@ -18,7 +18,7 @@ public class StreetArray {
      * @return Building
      */
     public Building getBuilding(int index){
-        if(index > 0 && index < size){
+        if(index >= 0 && index < size){
             return buildings[index];
         }
         return null;

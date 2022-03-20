@@ -13,7 +13,8 @@ CLASSES = \
         urban_planner/Market.java \
         urban_planner/Office.java \
         urban_planner/Playground.java  \
-        urban_planner/StreetArray.java
+        urban_planner/StreetArray.java \
+        urban_planner/StreetArrayList.java
 
 default: classes
 

@@ -8,11 +8,11 @@ MAIN = question/Main
 
 CLASSES = \
         question/Main.java \
-        question/q1.java \
-		question/q2.java \
-        question/q3.java \
-        question/q4.java \
-        question/q5.java
+        question/Q1.java \
+		question/Q2.java \
+        question/Q3.java \
+        question/Q4.java \
+        question/Q5.java
 
 default: classes
 

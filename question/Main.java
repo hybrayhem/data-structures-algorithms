@@ -1,5 +1,6 @@
 package question;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -61,16 +62,37 @@ class Main {
         /* ----------------------------------- Q2 ----------------------------------- */
         Q2 question2 = new Q2();
         List<Integer> q2List = Arrays.asList(1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 5, 5, 6, 7, 8, 8, 8, 9);
+
         int q2Start = 2;
         int q2End = 4;
-        System.out.printf("Q2: number of items between %d-%d = %d %n%n%n", q2Start, q2End,
-                question2.itemsBetween(q2List, q2Start, q2End, 0));
+        try {
+            System.out.printf("Q2: number of items between %d-%d = %d %n%n%n", q2Start, q2End,
+                    question2.itemsBetween(q2List, q2Start, q2End, 0));
+        } catch (IllegalArgumentException e) {
+            System.out.println("IllegalArgumentException: can't search items in range.");
+        }
+
         q2Start = 1;
         q2End = 4;
-        System.out.printf("Q2: number of items between %d-%d = %d %n%n%n", q2Start, q2End,
-                question2.itemsBetween(q2List, q2Start, q2End, 0));
-
+        try {
+            System.out.printf("Q2: number of items between %d-%d = %d %n%n%n", q2Start, q2End,
+                    question2.itemsBetween(q2List, q2Start, q2End, 0));
+        } catch (IllegalArgumentException e) {
+            System.out.println("IllegalArgumentException: can't search items in range.");
+        }
         /* ----------------------------------- Q3 ----------------------------------- */
+        Q3 question3 = new Q3();
+        int q3Sum = 13;
+        List<Integer> q3List = new ArrayList<Integer>(Arrays.asList(4, 6, 8, 4, 1, 3, 6, 4, 9));
+        List<Integer> q3Result = new ArrayList<Integer>(Arrays.asList());
+
+        // UnsupportedOperationException
+        try {
+            List<Integer> q3SubList = question3.contiguousSubarray(q3List, q3Sum, q3Result);
+        } catch (UnsupportedOperationException e) {
+            System.out.println("UnsupportedOperationException: can't extract subarray.");
+        }
+        System.out.println("Q3: Contiguous sub array = " + q3SubList.toString());
         /* ----------------------------------- Q4 ----------------------------------- */
         /* ----------------------------------- Q5 ----------------------------------- */
     }

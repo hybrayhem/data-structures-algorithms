@@ -1,6 +1,8 @@
 package question;
 
-public class BinaryHeap {
+import question.BinaryTree;
+
+public class BinaryHeap extends BinaryTree {
 
     public BinaryHeap() {
         System.out.printf("%n/* ------------------------------- BinaryHeap ------------------------------- */%n%n");

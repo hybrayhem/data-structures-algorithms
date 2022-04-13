@@ -79,6 +79,20 @@ public class BinaryTree<E> implements Serializable {
     }
 
     /**
+     * Return the data field of the root
+     * 
+     * @return the data field of the root
+     *         or null if the root is null
+     */
+    public E getData() {
+        if (root != null) {
+            return root.data;
+        } else {
+            return null;
+        }
+    }
+
+    /**
      * Determine whether this tree is a leaf
      * 
      * @return true if the root has no children
@@ -111,79 +125,6 @@ public class BinaryTree<E> implements Serializable {
             sb.append("\n");
             preOrderTraverse(node.left, depth + 1, sb);
             preOrderTraverse(node.right, depth + 1, sb);
-        }
-    }
-
-    public String oneLinePreorder() {
-        StringBuilder sb = new StringBuilder();
-        preOrderTraverseOneLine(root, sb);
-        return sb.toString();
-    }
-
-    /**
-     * Perform a preorder traversal, returning the tree as one line
-     * 
-     * @param node The local root
-     * @param sb   The string bufer to save the output
-     */
-    private void preOrderTraverseOneLine(Node<E> node, StringBuilder sb) {
-        if (node == null) {
-            // do nothing
-        } else {
-            sb.append(node.toString());
-            sb.append(" ");
-            preOrderTraverseOneLine(node.left, sb);
-            preOrderTraverseOneLine(node.right, sb);
-        }
-    }
-
-    public String oneLinePostorder() {
-        StringBuilder sb = new StringBuilder();
-        postOrderTraverse(root, sb);
-        return sb.toString();
-    }
-
-    /**
-     * Perform a postorder traversal, returning the tree as one line
-     * 
-     * @param node The local root
-     * @param sb   The string bufer to save the output
-     */
-    private void postOrderTraverse(Node<E> node, StringBuilder sb) {
-        if (node == null) {
-            // do nothing
-        } else {
-            preOrderTraverseOneLine(node.left, sb);
-            preOrderTraverseOneLine(node.right, sb);
-            sb.append(node.toString());
-            sb.append(" ");
-        }
-    }
-
-    public String oneLineInorder() {
-        StringBuilder sb = new StringBuilder();
-        inOrderTraverse(root, sb);
-        return sb.toString();
-    }
-
-    /**
-     * Perform an inorder traversal, returning the tree as one line (with
-     * parentheses)
-     * 
-     * @param node The local root
-     * @param sb   The string bufer to save the output
-     */
-    private void inOrderTraverse(Node<E> node, StringBuilder sb) {
-        if (node == null) {
-            // do nothing
-        } else {
-            sb.append("(");
-            inOrderTraverse(node.left, sb);
-            sb.append(" ");
-            sb.append(node.toString());
-            sb.append(" ");
-            inOrderTraverse(node.right, sb);
-            sb.append(")");
         }
     }
 
@@ -246,30 +187,5 @@ public class BinaryTree<E> implements Serializable {
             return data.toString();
         }
     }
-
-    /*
-     * // Class to encapsulate a tree node.
-     * protected static class Nodee<E> implements Serializable {
-     * // Data Fields
-     * // The information stored in this node.
-     * protected E data;
-     * // Reference to the left child.
-     * protected Nodee<E> left;
-     * // Reference to the right child.
-     * protected Nodee<E> right;
-     * 
-     * // Constructors
-     * //
-     * // Construct a node with given data and no children.
-     * //
-     * // @param data The data to store in this node
-     * //
-     * public Nodee(E data) {
-     * this.data = data;
-     * left = null;
-     * right = null;
-     * }
-     * }
-     */
 
 }

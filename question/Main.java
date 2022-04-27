@@ -1,9 +1,10 @@
 package question;
 
 import java.util.Arrays;
+import java.util.Random;
 import java.util.Scanner;
 
-import question.Q1;
+import question.HashTableHybrid;
 import question.Q2;
 
 class Main {
@@ -38,14 +39,14 @@ class Main {
         return selection;
     }
 
-    public static void testQ2(int[] array, int iteration) {
+    public static void testQ2(int[] array, int sampleNum) {
         Q2 q2 = new Q2();
 
         long mergeTime = 0;
         long quickTime = 0;
         long newTime = 0;
 
-        for (int i = 0; i < iteration; i++) {
+        for (int i = 0; i < sampleNum; i++) {
             q2.fillRandomArray(array);
 
             int[] arrayCopy = Arrays.copyOf(array, array.length);
@@ -70,14 +71,43 @@ class Main {
             newTime += newDuration; // total new sort time
         }
         // get average times
-        mergeTime /= iteration * micro2nano;
-        quickTime /= iteration * micro2nano;
-        newTime /= iteration * micro2nano;
+        mergeTime /= sampleNum * micro2nano;
+        quickTime /= sampleNum * micro2nano;
+        newTime /= sampleNum * micro2nano;
 
         System.out.printf(
                 "\nSample: %d, Array Size: %d\n(average time costs)\nMerge Sort: %d microseconds\nQuick Sort: %d microseconds\nNew Sort: %d microseconds\n\n",
-                iteration, array.length, mergeTime, quickTime, newTime);
+                sampleNum, array.length, mergeTime, quickTime, newTime);
         System.out.println("");
+    }
+
+    public static void fillRandomTable(HashTableHybrid<Integer, Integer> hTable, int size) {
+        Random random = new Random();
+
+        for (int i = 0; i < size; i++) {
+            int num = random.nextInt(size);
+            hTable.put(num, num);
+        }
+    }
+
+    public static void testQ1(int size) {
+        HashTableHybrid<Integer, Integer> hTable = new HashTableHybrid<>();
+        long insertTime = 0;
+        int sampleNum = 100;
+
+        for (int i = 0; i < sampleNum; i++) {
+            long startTime = System.nanoTime();
+            fillRandomTable(hTable, size);
+            long duration = System.nanoTime() - startTime;
+            insertTime += duration; // total insert time
+        }
+        // get average times
+        insertTime /= sampleNum * micro2nano;
+        System.out.printf("\nSample: %d, Array Size: %d\n(average time costs)\nHashTable Insert: %d microseconds\n",
+                sampleNum,
+                size, insertTime);
+        System.out.println("");
+
     }
 
     /**
@@ -87,7 +117,9 @@ class Main {
         System.out.println("main");
 
         /* ----------------------------------- Q1 ----------------------------------- */
-
+        testQ1(100);
+        testQ1(1000);
+        testQ1(10000);
         /* ----------------------------------- Q2 ----------------------------------- */
         int[] smallArray = new int[100];
         int[] medArray = new int[1000];
@@ -96,12 +128,5 @@ class Main {
         testQ2(smallArray, 100);
         testQ2(medArray, 100);
         testQ2(largeArray, 100);
-
-        // int[] minMax = {0,0};
-        // q2.findMinMax(smallArray, 0, smallArray.length-1, minMax);
-        // System.out.println("result: " + smallArray[minMax[0]] + ", " +
-        // smallArray[minMax[1]]);
-        // System.out.println(", T(n) = " + ((stopTime - startTime) / 1000) + "." +
-        // (((stopTime - startTime) / 100) % 10) + " microsecond");
     }
 }

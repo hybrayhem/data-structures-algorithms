@@ -8,7 +8,6 @@ MAIN = question/Main
 
 CLASSES = \
         question/Main.java \
-        question/Q1.java \
 		question/Q2.java
 
 default: classes

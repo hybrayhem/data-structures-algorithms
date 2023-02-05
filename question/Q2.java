@@ -9,12 +9,20 @@ public class Q2 {
         System.out.printf("%n/* ----------------------------------- Q2 ----------------------------------- */%n%n");
     }
 
+    
+    /** 
+     * @param array
+     */
     public void fillRandomArray(int[] array) {
         for (int i = 0; i < array.length; i++) {
             array[i] = random.nextInt(array.length);
         }
     }
 
+    
+    /** 
+     * @param array
+     */
     public void printArray(int[] array) {
         System.out.printf("%n[");
         for (int i : array) {
@@ -88,8 +96,8 @@ public class Q2 {
     /**
      * Sort the table using the quicksort algorithm.
      * 
-     * @pre table contains Comparable objects.
-     * @post table is sorted.
+     * pre table contains Comparable objects.
+     * post table is sorted.
      * @param table The array to be sorted
      */
     public void quickSort(int[] table) {
@@ -158,17 +166,34 @@ public class Q2 {
         return down;
     }
 
+    
+    /** 
+     * @param table
+     * @param up
+     * @param down
+     */
     private void swap(int[] table, int up, int down) {
         int temp = table[up];
         table[up] = table[down];
         table[down] = temp;
     }
 
+    
+    /** 
+     * @param table
+     */
     public void newSort(int[] table) {
         // Sort the whole table.
         rNewSort(table, 0, table.length - 1);
     }
 
+    
+    /** 
+     * @param array
+     * @param head
+     * @param tail
+     * @return int[]
+     */
     private int[] rNewSort(int[] array, int head, int tail) {
         // printArray(array);
         if (head > tail) {
@@ -182,6 +207,13 @@ public class Q2 {
         }
     }
 
+    
+    /** 
+     * @param array
+     * @param head
+     * @param tail
+     * @param result
+     */
     // find the indices of minimum and maximum items between the given head and tail
     /* private */public void findMinMax(int[] array, int head, int tail, int[] result) {
         if (head == tail) {
@@ -205,12 +237,26 @@ public class Q2 {
 
     }
 
+    
+    /** 
+     * @param array
+     * @param first
+     * @param second
+     * @return int
+     */
     private int minIndex(int[] array, int first, int second) {
         if (array[first] > array[second])
             return second;
         return first;
     }
 
+    
+    /** 
+     * @param array
+     * @param first
+     * @param second
+     * @return int
+     */
     private int maxIndex(int[] array, int first, int second) {
         if (array[first] < array[second])
             return second;

@@ -71,11 +71,12 @@ public class HashTableHybrid<K, V> implements KWHashMap<K, V> {
     /**
      * Method put for class HashtableOpen.
      * 
-     * @post This key-value pair is inserted in the
-     *       table and numKeys is incremented. If the key is already
-     *       in the table, its value is changed to the argument
-     *       value and numKeys is not changed. If the LOAD_THRESHOLD
-     *       is exceeded, the table is expanded.
+     * post This key-value pair is inserted in the
+     * table and numKeys is incremented. If the key is already
+     * in the table, its value is changed to the argument
+     * value and numKeys is not changed. If the LOAD_THRESHOLD
+     * is exceeded, the table is expanded.
+     * 
      * @param key   The key of item being inserted
      * @param value The value for this key
      * @return Old value associated with this key if found;
@@ -130,21 +131,31 @@ public class HashTableHybrid<K, V> implements KWHashMap<K, V> {
         }
     }
 
+    /**
+     * @return boolean
+     */
     @Override
     public boolean isEmpty() {
-        // TODO Auto-generated method stub
+        // TODO: Will be implemented
         return false;
     }
 
+    /**
+     * @param key
+     * @return V
+     */
     @Override
     public V remove(K key) {
-        // TODO Auto-generated method stub
+        // TODO: Will be implemented
         return null;
     }
 
+    /**
+     * @return int
+     */
     @Override
     public int size() {
-        // TODO Auto-generated method stub
+        // TODO: Will be implemented
         return 0;
     }
 

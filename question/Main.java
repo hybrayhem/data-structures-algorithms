@@ -10,12 +10,6 @@ import question.Q2;
 class Main {
     static final double micro2nano = 1000;
 
-    /**
-     * @param msg
-     * @param lower
-     * @param upper
-     * @return int
-     */
     // secure input function that gets the int selection for menu with a
     // bullet-proof
     // error handling
@@ -39,6 +33,10 @@ class Main {
         return selection;
     }
 
+    /**
+     * @param array
+     * @param sampleNum
+     */
     public static void testQ2(int[] array, int sampleNum) {
         Q2 q2 = new Q2();
 
@@ -81,6 +79,10 @@ class Main {
         System.out.println("");
     }
 
+    /**
+     * @param hTable
+     * @param size
+     */
     public static void fillRandomTable(HashTableHybrid<Integer, Integer> hTable, int size) {
         Random random = new Random();
 
@@ -90,6 +92,9 @@ class Main {
         }
     }
 
+    /**
+     * @param size
+     */
     public static void testQ1(int size) {
         HashTableHybrid<Integer, Integer> hTable = new HashTableHybrid<>();
         long insertTime = 0;
@@ -117,16 +122,26 @@ class Main {
         System.out.println("main");
 
         /* ----------------------------------- Q1 ----------------------------------- */
-        testQ1(100);
-        testQ1(1000);
-        testQ1(10000);
+        try {
+            testQ1(100);
+            testQ1(1000);
+            testQ1(10000);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            System.exit(1);
+        }
         /* ----------------------------------- Q2 ----------------------------------- */
         int[] smallArray = new int[100];
         int[] medArray = new int[1000];
         int[] largeArray = new int[10000];
 
-        testQ2(smallArray, 100);
-        testQ2(medArray, 100);
-        testQ2(largeArray, 100);
+        try {
+            testQ2(smallArray, 100);
+            testQ2(medArray, 100);
+            testQ2(largeArray, 100);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            System.exit(1);
+        }
     }
 }

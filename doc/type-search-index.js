@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"question","l":"HashTableHybrid"},{"p":"question","l":"KWHashMap"},{"p":"question","l":"Q2"}]

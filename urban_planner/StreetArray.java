@@ -14,8 +14,8 @@ public class StreetArray {
 
     
     /** 
-     * @param index
-     * @return Building
+     * @param index get object at index
+     * @return Building return object
      */
     public Building getBuilding(int index){
         if(index >= 0 && index < size){
@@ -25,7 +25,7 @@ public class StreetArray {
     }
 
     /**
-     * @return int
+     * @return int size of street
      */
     public int buildingNumber() {
         int num = 0;
@@ -36,8 +36,8 @@ public class StreetArray {
     }
 
     /**
-     * @param building
-     * @return Building[]
+     * @param building Object to add to end of list
+     * @return Building[] return new street
      */
     public void add(Building building) {
         // int size = buildingNumber();
@@ -53,7 +53,7 @@ public class StreetArray {
     }
 
     /**
-     * @param index
+     * @param index delete building at index
      */
     public void delete(int index) {
         // int size = buildingNumber();
@@ -73,7 +73,7 @@ public class StreetArray {
     }
 
     /**
-     * @return int
+     * @return int height of tallest building
      */
     public int maxStreetHeigth() {
         int res = 0;
@@ -85,7 +85,7 @@ public class StreetArray {
     }
 
     /**
-     * @return int
+     * @return int length of widest building
      */
     public int maxStreetLength() {
         int res = 0;
@@ -97,7 +97,7 @@ public class StreetArray {
     }
 
     /**
-     * @return int[][]
+     * @return int[][] converting building into martix for visualization
      */
     public int[][] streetViewMatrix() {
         int[][] streetView = new int[maxStreetHeigth()][maxStreetLength()];

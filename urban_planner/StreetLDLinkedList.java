@@ -12,10 +12,9 @@ public class StreetLDLinkedList {
     }
 
     
-    
     /** 
-     * @param index
-     * @return Building
+     * @param index get object at index
+     * @return Building return object
      */
     public Building getBuilding(int index){
         if(index >= 0 && index < buildings.size()){
@@ -25,24 +24,25 @@ public class StreetLDLinkedList {
     }
 
     
-    /** 
-     * @return int
+    /**
+     * @return int size of street
      */
     public int buildingNumber() {
         return buildings.size();
     }
 
     
-    /** 
-     * @param building
+    /**
+     * @param building Object to add to end of list
+     * @return Building[] return new street
      */
     public void add(Building building) {
         buildings.add(building);
     }
 
     
-    /** 
-     * @param index
+    /**
+     * @param index delete building at index
      */
     public void delete(int index) {
         buildings.remove(index);
@@ -55,8 +55,8 @@ public class StreetLDLinkedList {
     }
 
     
-    /** 
-     * @return int
+    /**
+     * @return int height of tallest building
      */
     public int maxStreetHeigth() {
         int res = 0;
@@ -68,8 +68,8 @@ public class StreetLDLinkedList {
     }
 
     
-    /** 
-     * @return int
+    /**
+     * @return int length of widest building
      */
     public int maxStreetLength() {
         int res = 0;

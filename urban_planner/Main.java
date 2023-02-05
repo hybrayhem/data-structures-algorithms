@@ -12,8 +12,8 @@ import urban_planner.Market;
 import urban_planner.Playground;
 
 class Main {
-    
-    /** 
+
+    /**
      * @param msg
      * @param lower
      * @param upper
@@ -42,9 +42,7 @@ class Main {
         return selection;
     }
 
-
-    
-    /** 
+    /**
      * @param args
      */
     public static void main(String[] args) {
@@ -145,16 +143,17 @@ class Main {
                         + playground1.equals(playground2));
         System.out.println("\n\n");
 
+        System.out.println("\n\n\n\nSTREET ARRAY TEST\n\n\n\n");
+        
+        long startTime = System.nanoTime();
         /* -------------------------------------------------------------------------- */
         /* Street Test with Auto input */
         /* -------------------------------------------------------------------------- */
-        // StreetArray street = new StreetArray();
-        // StreetArrayList street = new StreetArrayList();
-        StreetLDLinkedList street = new StreetLDLinkedList();
+        StreetArray street = new StreetArray();
 
         System.out.println("/* ---------------------------- Initialize Street ---------------------------- */");
         street.add(house1);
-        
+
         street.add(house2);
         System.out.println("Total number of buildings(after adding two house): " + street.buildingNumber());
         street.listBuildings();
@@ -179,7 +178,7 @@ class Main {
 
         System.out.println("\nStreet View\n");
         street.printViewMatrix(street.streetViewMatrix());
-        
+
         try {
             street.delete(0);
             street.delete(4);
@@ -189,7 +188,7 @@ class Main {
         System.out.println("\nTotal number of buildings(delete house1 and office2): " + street.buildingNumber());
         System.out.println("\nStreet View\n");
         street.printViewMatrix(street.streetViewMatrix());
-        
+
         System.out.println("\n\n/* -------------------------------- View mode ------------------------------- */");
         System.out.println("\nSilhouette View\n");
         street.printViewMatrix(street.silhouetteViewMatrix());
@@ -209,9 +208,234 @@ class Main {
         /* ------------------------------- Focus Mode ------------------------------- */
         System.out.println("\n\n/* ---------------------------- Focus Mode ---------------------------- */");
         street.listBuildings();
-        int selection = get_selection("Select a building to focus:", 1, street.buildingNumber());
-        System.out.println("Focused: " + street.getBuilding(selection - 1).focus());
+        // int selection = get_selection("Select a building to focus:", 1, street.buildingNumber());
+        System.out.println("Focused to 1. building: " + street.getBuilding(0).focus());
 
+        /* -------------------------------------------------------------------------- */
+        /* Street Test with User input */
+        /* -------------------------------------------------------------------------- */
+
+        long stopTime = System.nanoTime();
+        System.out.println(", T(n) = " + ((stopTime - startTime) / 1000) + "." + (((stopTime - startTime) / 100)%10) +
+                            " microsecond");
+        System.out.println("\n\n\n\nSTREET ARRAYLIST TEST\n\n\n\n");
+
+
+        startTime = System.nanoTime();
+        /* -------------------------------------------------------------------------- */
+        /* Street Test with Auto input */
+        /* -------------------------------------------------------------------------- */
+        StreetArrayList streetList = new StreetArrayList();
+
+        System.out.println("/* ---------------------------- Initialize Street ---------------------------- */");
+        streetList.add(house1);
+
+        streetList.add(house2);
+        System.out.println("Total number of buildings(after adding two house): " + streetList.buildingNumber());
+        streetList.listBuildings();
+
+        try {
+            streetList.delete(0);
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("IndexOutOfBoundsException: " + e.getMessage());
+        }
+        System.out.println("Total number of buildings(delete first house): " + streetList.buildingNumber());
+        streetList.listBuildings();
+
+        System.out.println("\n\n/* -------------------------------- Edit mode ------------------------------- */");
+        streetList.add(house1);
+        streetList.add(office1);
+        streetList.add(office2);
+        streetList.add(market1);
+        streetList.add(market2);
+        streetList.add(playground1);
+        streetList.add(playground2);
+        System.out.println("Total number of buildings(add 7 more building): " + streetList.buildingNumber());
+
+        System.out.println("\nStreet View\n");
+        streetList.printViewMatrix(streetList.streetViewMatrix());
+
+        try {
+            streetList.delete(0);
+            streetList.delete(4);
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("IndexOutOfBoundsException: " + e.getMessage());
+        }
+        System.out.println("\nTotal number of buildings(delete house1 and office2): " + streetList.buildingNumber());
+        System.out.println("\nStreet View\n");
+        streetList.printViewMatrix(streetList.streetViewMatrix());
+
+        System.out.println("\n\n/* -------------------------------- View mode ------------------------------- */");
+        System.out.println("\nSilhouette View\n");
+        streetList.printViewMatrix(streetList.silhouetteViewMatrix());
+
+        System.out.println(
+                "\nTotal remaining length of lands on the streetList: " + streetList.emptyLand(streetList.silhouetteViewMatrix()));
+        System.out.println("\n\nList of buildings:");
+        streetList.listBuildings();
+        System.out.println("Number of playgrounds: " + streetList.playgroundNumber());
+
+        totalLen = streetList.maxStreetLength();
+        withoutPlaygroundLen = streetList.totalWithoutPlayground();
+        System.out.println("Ratio of length of playgrounds: " + (totalLen - withoutPlaygroundLen) + " / " + totalLen);
+
+        System.out.println("Total length of markets, houses or offices: " + withoutPlaygroundLen);
+
+        /* ------------------------------- Focus Mode ------------------------------- */
+        System.out.println("\n\n/* ---------------------------- Focus Mode ---------------------------- */");
+        streetList.listBuildings();
+        // int selection2 = get_selection("Select a building to focus:", 1, streetList.buildingNumber());
+        System.out.println("Focused to 2. building : " + streetList.getBuilding(1).focus());
+
+        /* -------------------------------------------------------------------------- */
+        /* Street Test with User input */
+        /* -------------------------------------------------------------------------- */
+        stopTime = System.nanoTime();
+        System.out.println(", T(n) = " + ((stopTime - startTime) / 1000) + "." + (((stopTime - startTime) / 100)%10) +
+        " microsecond");
+        System.out.println("\n\n\n\nSTREET LINKED LIST TEST\n\n\n\n");
+        startTime = System.nanoTime();
+        /* -------------------------------------------------------------------------- */
+        /* Street Test with Auto input */
+        /* -------------------------------------------------------------------------- */
+        StreetLinkedList streetLinkedList = new StreetLinkedList();
+
+        System.out.println("/* ---------------------------- Initialize Street ---------------------------- */");
+        streetLinkedList.add(house1);
+
+        streetLinkedList.add(house2);
+        System.out.println("Total number of buildings(after adding two house): " + streetLinkedList.buildingNumber());
+        streetLinkedList.listBuildings();
+
+        try {
+            streetLinkedList.delete(0);
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("IndexOutOfBoundsException: " + e.getMessage());
+        }
+        System.out.println("Total number of buildings(delete first house): " + streetLinkedList.buildingNumber());
+        streetLinkedList.listBuildings();
+
+        System.out.println("\n\n/* -------------------------------- Edit mode ------------------------------- */");
+        streetLinkedList.add(house1);
+        streetLinkedList.add(office1);
+        streetLinkedList.add(office2);
+        streetLinkedList.add(market1);
+        streetLinkedList.add(market2);
+        streetLinkedList.add(playground1);
+        streetLinkedList.add(playground2);
+        System.out.println("Total number of buildings(add 7 more building): " + streetLinkedList.buildingNumber());
+
+        System.out.println("\nStreet View\n");
+        streetLinkedList.printViewMatrix(streetLinkedList.streetViewMatrix());
+
+        try {
+            streetLinkedList.delete(0);
+            streetLinkedList.delete(4);
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("IndexOutOfBoundsException: " + e.getMessage());
+        }
+        System.out.println("\nTotal number of buildings(delete house1 and office2): " + streetLinkedList.buildingNumber());
+        System.out.println("\nStreet View\n");
+        streetLinkedList.printViewMatrix(streetLinkedList.streetViewMatrix());
+
+        System.out.println("\n\n/* -------------------------------- View mode ------------------------------- */");
+        System.out.println("\nSilhouette View\n");
+        streetLinkedList.printViewMatrix(streetLinkedList.silhouetteViewMatrix());
+
+        System.out.println(
+                "\nTotal remaining length of lands on the streetLinkedList: " + streetLinkedList.emptyLand(streetLinkedList.silhouetteViewMatrix()));
+        System.out.println("\n\nList of buildings:");
+        streetLinkedList.listBuildings();
+        System.out.println("Number of playgrounds: " + streetLinkedList.playgroundNumber());
+
+        totalLen = streetLinkedList.maxStreetLength();
+        withoutPlaygroundLen = streetLinkedList.totalWithoutPlayground();
+        System.out.println("Ratio of length of playgrounds: " + (totalLen - withoutPlaygroundLen) + " / " + totalLen);
+
+        System.out.println("Total length of markets, houses or offices: " + withoutPlaygroundLen);
+
+        /* ------------------------------- Focus Mode ------------------------------- */
+        System.out.println("\n\n/* ---------------------------- Focus Mode ---------------------------- */");
+        streetLinkedList.listBuildings();
+        // selection = get_selection("Select a building to focus:", 1, streetLinkedList.buildingNumber());
+        System.out.println("Focused to 3. building: " + streetLinkedList.getBuilding(2).focus());
+
+        /* -------------------------------------------------------------------------- */
+        /* Street Test with User input */
+        /* -------------------------------------------------------------------------- */
+        stopTime = System.nanoTime();
+        System.out.println(", T(n) = " + ((stopTime - startTime) / 1000) + "." + (((stopTime - startTime) / 100)%10) +
+        " microsecond");
+        System.out.println("\n\n\n\nSTREET LD LINKED LIST TEST\n\n\n\n");
+        startTime = System.nanoTime();
+        /* -------------------------------------------------------------------------- */
+        /* Street Test with Auto input */
+        /* -------------------------------------------------------------------------- */
+        StreetLDLinkedList streetLDLinkedList = new StreetLDLinkedList();
+
+        System.out.println("/* ---------------------------- Initialize Street ---------------------------- */");
+        streetLDLinkedList.add(house1);
+
+        streetLDLinkedList.add(house2);
+        System.out.println("Total number of buildings(after adding two house): " + streetLDLinkedList.buildingNumber());
+        streetLDLinkedList.listBuildings();
+
+        try {
+            streetLDLinkedList.delete(0);
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("IndexOutOfBoundsException: " + e.getMessage());
+        }
+        System.out.println("Total number of buildings(delete first house): " + streetLDLinkedList.buildingNumber());
+        streetLDLinkedList.listBuildings();
+
+        System.out.println("\n\n/* -------------------------------- Edit mode ------------------------------- */");
+        streetLDLinkedList.add(house1);
+        streetLDLinkedList.add(office1);
+        streetLDLinkedList.add(office2);
+        streetLDLinkedList.add(market1);
+        streetLDLinkedList.add(market2);
+        streetLDLinkedList.add(playground1);
+        streetLDLinkedList.add(playground2);
+        System.out.println("Total number of buildings(add 7 more building): " + streetLDLinkedList.buildingNumber());
+
+        System.out.println("\nStreet View\n");
+        streetLDLinkedList.printViewMatrix(streetLDLinkedList.streetViewMatrix());
+
+        try {
+            streetLDLinkedList.delete(0);
+            streetLDLinkedList.delete(4);
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("IndexOutOfBoundsException: " + e.getMessage());
+        }
+        System.out.println("\nTotal number of buildings(delete house1 and office2): " + streetLDLinkedList.buildingNumber());
+        System.out.println("\nStreet View\n");
+        streetLDLinkedList.printViewMatrix(streetLDLinkedList.streetViewMatrix());
+
+        System.out.println("\n\n/* -------------------------------- View mode ------------------------------- */");
+        System.out.println("\nSilhouette View\n");
+        streetLDLinkedList.printViewMatrix(streetLDLinkedList.silhouetteViewMatrix());
+
+        System.out.println(
+                "\nTotal remaining length of lands on the streetLDLinkedList: " + streetLDLinkedList.emptyLand(streetLDLinkedList.silhouetteViewMatrix()));
+        System.out.println("\n\nList of buildings:");
+        streetLDLinkedList.listBuildings();
+        System.out.println("Number of playgrounds: " + streetLDLinkedList.playgroundNumber());
+
+        totalLen = streetLDLinkedList.maxStreetLength();
+        withoutPlaygroundLen = streetLDLinkedList.totalWithoutPlayground();
+        System.out.println("Ratio of length of playgrounds: " + (totalLen - withoutPlaygroundLen) + " / " + totalLen);
+
+        System.out.println("Total length of markets, houses or offices: " + withoutPlaygroundLen);
+
+        /* ------------------------------- Focus Mode ------------------------------- */
+        System.out.println("\n\n/* ---------------------------- Focus Mode ---------------------------- */");
+        streetLDLinkedList.listBuildings();
+        // selection = get_selection("Select a building to focus:", 1, streetLDLinkedList.buildingNumber());
+        System.out.println("Focused 4. building: " + streetLDLinkedList.getBuilding(3).focus());
+
+        stopTime = System.nanoTime();
+        System.out.println(", T(n) = " + ((stopTime - startTime) / 1000) + "." + (((stopTime - startTime) / 100)%10) +
+                            " microsecond");
         /* -------------------------------------------------------------------------- */
         /* Street Test with User input */
         /* -------------------------------------------------------------------------- */

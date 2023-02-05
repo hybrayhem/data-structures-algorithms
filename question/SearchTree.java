@@ -26,7 +26,7 @@ public interface SearchTree<E> {
 	 * @param target The data we are searching for
 	 * @return The data if we find it; null otherwise
 	 */
-	E find(E target);
+	// E find(E target);
 	
 	/**
 	 * Removes target (if found) from tree and returns true; otherwise returns false

@@ -45,6 +45,7 @@ class Main {
         System.out.println("main");
 
         /* ------------------------------- BinaryTree ------------------------------- */
+        System.out.printf("%n/* ------------------------------- BinaryTree ------------------------------- */%n%n");
         BinaryTree<String> test = new BinaryTree("Root",
                 new BinaryTree("Left",
                         null,
@@ -79,6 +80,7 @@ class Main {
         System.out.println(redux.toString());// prove that the file was read back in correctly
 
         /* ------------------------------- BinaryHeap ------------------------------- */
+        BinaryHeap binaryHeap = new BinaryHeap();
 
         /* ---------------------------- BinarySearchTree ---------------------------- */
         BinarySearchTree<Integer> testTree = new BinarySearchTree<Integer>();
@@ -95,6 +97,9 @@ class Main {
 		//Add to beginning and end of list.
 		testTree.add(-1);
 		testTree.add(MAX_INT + 1);
+        System.out.println(testTree.toString());
+        testTree.remove(-1);
+        System.out.println("AFTER REMOVE -1");
         System.out.println(testTree.toString());
     }
 }

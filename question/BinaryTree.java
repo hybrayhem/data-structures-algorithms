@@ -20,7 +20,6 @@ public class BinaryTree<E> implements Serializable {
 
     // Constructors
     public BinaryTree() {
-        System.out.printf("%n/* ------------------------------- BinaryTree ------------------------------- */%n%n");
         root = null;
     }
 

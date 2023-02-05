@@ -1,0 +1,47 @@
+
+Sample: 100, Array Size: 100
+(average time costs)
+HashTable Insert: 34 microseconds
+
+
+Sample: 100, Array Size: 1000
+(average time costs)
+HashTable Insert: 90 microseconds
+
+
+Sample: 100, Array Size: 10000
+(average time costs)
+HashTable Insert: 686 microseconds
+
+
+/* ----------------------------------- Q2 ----------------------------------- */
+
+
+Sample: 100, Array Size: 100
+(average time costs)
+Merge Sort: 18 microseconds
+Quick Sort: 10 microseconds
+New Sort: 70 microseconds
+
+
+
+/* ----------------------------------- Q2 ----------------------------------- */
+
+
+Sample: 100, Array Size: 1000
+(average time costs)
+Merge Sort: 149 microseconds
+Quick Sort: 78 microseconds
+New Sort: 2666 microseconds
+
+
+
+/* ----------------------------------- Q2 ----------------------------------- */
+
+
+Sample: 100, Array Size: 10000
+(average time costs)
+Merge Sort: 1681 microseconds
+Quick Sort: 949 microseconds
+New Sort: 267691 microseconds
+

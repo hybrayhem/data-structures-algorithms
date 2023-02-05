@@ -1,0 +1,269 @@
+@startuml
+
+title __URBAN_PLANNER's Class Diagram__\n
+
+  namespace urban_planner {
+    abstract class urban_planner.Building {
+        # viewMatrix : int[][]
+        - height : int
+        - length : int
+        - position : int
+        + equals()
+        {abstract} + focus()
+        + getHeight()
+        + getLength()
+        + getPosition()
+        + getViewMatrix()
+        + hashCode()
+        + printViewMatrix()
+        + setHeight()
+        + setLength()
+        + setPosition()
+        + toString()
+        + updateViewMatrix()
+        # Building()
+        # Building()
+    }
+  }
+  
+
+  namespace urban_planner {
+    class urban_planner.House {
+        - color : String
+        - owner : String
+        - room : int
+        + House()
+        + House()
+        + equals()
+        + focus()
+        + getColor()
+        + getOwner()
+        + getRoom()
+        + hashCode()
+        + setColor()
+        + setOwner()
+        + setRoom()
+        + toString()
+        # clone()
+    }
+  }
+  
+
+  namespace urban_planner {
+    class urban_planner.LDLinkedList {
+        - size : int
+        + LDLinkedList()
+        + add()
+        + add()
+        + addAll()
+        + addAll()
+        + addLazy()
+        + clear()
+        + contains()
+        + containsAll()
+        + equals()
+        + get()
+        + indexOf()
+        + isEmpty()
+        + iterator()
+        + lastIndexOf()
+        + listIterator()
+        + listIterator()
+        + popLazy()
+        + remove()
+        + remove()
+        + removeAll()
+        + retainAll()
+        + set()
+        + size()
+        + sizeLazy()
+        + subList()
+        + toArray()
+        + toArray()
+    }
+  }
+  
+
+  namespace urban_planner {
+    class urban_planner.LDLinkedList.Node {
+        + Node()
+        + getData()
+        + getNext()
+        + setData()
+        + setNext()
+    }
+  }
+  
+
+  namespace urban_planner {
+    class urban_planner.Main {
+        {static} + get_selection()
+        {static} + main()
+    }
+  }
+  
+
+  namespace urban_planner {
+    class urban_planner.Market {
+        - closingTime : String
+        - openingTime : String
+        - owner : String
+        + Market()
+        + Market()
+        + closingTime()
+        + equals()
+        + focus()
+        + getClosingTime()
+        + getOpeningTime()
+        + getOwner()
+        + hashCode()
+        + openingTime()
+        + owner()
+        + setClosingTime()
+        + setOpeningTime()
+        + setOwner()
+        + toString()
+        # clone()
+    }
+  }
+  
+
+  namespace urban_planner {
+    class urban_planner.Office {
+        - jobType : String
+        - owner : String
+        + Office()
+        + Office()
+        + equals()
+        + focus()
+        + getJobType()
+        + getOwner()
+        + hashCode()
+        + setJobType()
+        + setOwner()
+        + toString()
+        # clone()
+    }
+  }
+  
+
+  namespace urban_planner {
+    class urban_planner.Playground {
+        + Playground()
+        + Playground()
+        + equals()
+        + focus()
+        + hashCode()
+        + toString()
+        # clone()
+    }
+  }
+  
+
+  namespace urban_planner {
+    class urban_planner.StreetArray {
+        - buildings : Building[]
+        - size : int
+        + StreetArray()
+        + add()
+        + buildingNumber()
+        + delete()
+        + emptyLand()
+        + getBuilding()
+        + listBuildings()
+        + maxStreetHeigth()
+        + maxStreetLength()
+        + playgroundNumber()
+        + printViewMatrix()
+        + silhouetteViewMatrix()
+        + streetViewMatrix()
+        + totalWithoutPlayground()
+    }
+  }
+  
+
+  namespace urban_planner {
+    class urban_planner.StreetArrayList {
+        - buildings : List<Building>
+        {static} - initialCapacity : int
+        + StreetArrayList()
+        + add()
+        + buildingNumber()
+        + delete()
+        + emptyLand()
+        + getBuilding()
+        + listBuildings()
+        + maxStreetHeigth()
+        + maxStreetLength()
+        + playgroundNumber()
+        + printViewMatrix()
+        + silhouetteViewMatrix()
+        + streetViewMatrix()
+        + totalWithoutPlayground()
+    }
+  }
+  
+
+  namespace urban_planner {
+    class urban_planner.StreetLDLinkedList {
+        ~ buildings : LDLinkedList<Building>
+        + StreetLDLinkedList()
+        + add()
+        + buildingNumber()
+        + delete()
+        + emptyLand()
+        + getBuilding()
+        + listBuildings()
+        + maxStreetHeigth()
+        + maxStreetLength()
+        + playgroundNumber()
+        + printViewMatrix()
+        + silhouetteViewMatrix()
+        + streetViewMatrix()
+        + totalWithoutPlayground()
+    }
+  }
+  
+
+  namespace urban_planner {
+    class urban_planner.StreetLinkedList {
+        ~ buildings : LinkedList<Building>
+        + StreetLinkedList()
+        + add()
+        + buildingNumber()
+        + delete()
+        + emptyLand()
+        + getBuilding()
+        + listBuildings()
+        + maxStreetHeigth()
+        + maxStreetLength()
+        + playgroundNumber()
+        + printViewMatrix()
+        + silhouetteViewMatrix()
+        + streetViewMatrix()
+        + totalWithoutPlayground()
+    }
+  }
+  
+
+  urban_planner.Building .up.|> Cloneable
+  urban_planner.House -up-|> urban_planner.Building
+  urban_planner.LDLinkedList .up.|> List
+  urban_planner.LDLinkedList o-- urban_planner.LDLinkedList.Node : head
+  urban_planner.LDLinkedList o-- urban_planner.LDLinkedList.Node : lazyHead
+  urban_planner.LDLinkedList +-down- urban_planner.LDLinkedList.Node
+  urban_planner.LDLinkedList.Node o-- E : item
+  urban_planner.LDLinkedList.Node o-- urban_planner.LDLinkedList.Node : next
+  urban_planner.Market -up-|> urban_planner.Building
+  urban_planner.Office -up-|> urban_planner.Building
+  urban_planner.Playground -up-|> urban_planner.Building
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

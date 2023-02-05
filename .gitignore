@@ -1,3 +1,3 @@
-homework/*.class
+*.class
 .idea/
 *.iml

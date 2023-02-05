@@ -87,8 +87,9 @@ class Main {
         List<Integer> q3Result = new ArrayList<Integer>(Arrays.asList());
 
         // UnsupportedOperationException
+        List<Integer> q3SubList = new ArrayList<Integer>();
         try {
-            List<Integer> q3SubList = question3.contiguousSubarray(q3List, q3Sum, q3Result);
+            q3SubList = question3.contiguousSubarray(q3List, q3Sum, q3Result);
         } catch (UnsupportedOperationException e) {
             System.out.println("UnsupportedOperationException: can't extract subarray.");
         }

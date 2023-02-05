@@ -3,12 +3,19 @@ package question;
 import java.util.Collections;
 import java.util.List;
 
-class Q3 {
+public class Q3 {
 
     public Q3() {
         System.out.printf("%n/* ----------------------------------- Q3 ----------------------------------- */%n%n");
     }
 
+    
+    /** 
+     * @param array
+     * @param sum
+     * @param result
+     * @return List<Integer>
+     */
     public List<Integer> extractSubarray(List<Integer> array, int sum, List<Integer> result){
         if(sum <= 0) return result;
 
@@ -18,6 +25,12 @@ class Q3 {
         return extractSubarray(array, sum, result);
     }
 
+    
+    /** 
+     * @param array
+     * @param sum
+     * @return boolean
+     */
     public boolean subarrayMatch(List<Integer> array, int sum) {
         if(sum == 0) return true;
         if(array.isEmpty() || sum < 0) return false;
@@ -30,6 +43,13 @@ class Q3 {
         return false;
     }
 
+    
+    /** 
+     * @param array
+     * @param sum
+     * @param result
+     * @return List<Integer>
+     */
     public List<Integer> contiguousSubarray(List<Integer> array, int sum, List<Integer> result) {
         if(array.isEmpty()) return Collections.emptyList();
 

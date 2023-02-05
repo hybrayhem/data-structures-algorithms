@@ -1,0 +1,48 @@
+graph.toString
+Node 0-->
+	node: 1, weight: 1.0
+	node: 3, weight: 1.0
+Node 1-->
+	node: 4, weight: 1.0
+Node 2-->
+	node: 4, weight: 1.0
+	node: 5, weight: 1.0
+Node 3-->
+	node: 1, weight: 1.0
+Node 4-->
+	node: 3, weight: 1.0
+Node 5-->
+	node: 5, weight: 1.0
+
+exportMatrix
+   0 1 2 3 4 5 
+0- 0 1 0 1 0 0 
+1- 0 0 0 0 1 0 
+2- 0 0 0 0 1 1 
+3- 0 1 0 0 0 0 
+4- 0 0 0 1 0 0 
+5- 0 0 0 0 0 1 
+
+printGraph
+Node 0 --> 1, 3, 
+Node 1 --> 4, 
+Node 2 --> 4, 5, 
+Node 3 --> 1, 
+Node 4 --> 3, 
+Node 5 --> 5, 
+
+BreadthFirstSearch
+Node and Parent in tree:
+0 -1
+1 0
+2 -1
+3 0
+4 1
+5 -1
+
+dijkstrasAlgorithm
+Predecessors: [I@7cdbc5d3
+Distance: [D@28864e92
+Predecessors: [I@7cdbc5d3
+Distance: [D@28864e92
+
